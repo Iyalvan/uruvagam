@@ -23,7 +23,7 @@
 
 I wanted a way to take a topic — or a pile of half-written notes — and turn it into a presentation I could actually narrate, in my own voice, without spending an evening on PowerPoint. So I started stitching together open-source pieces: a local LLM to draft the slides, a TTS model that could clone a 15-second voice sample, and Wav2Lip to make a talking-head video that more-or-less tracks the audio.
 
-This is the result. It is an experiment. It works on my machine. That is about as much as I can promise.
+This is the result. It is an experiment. It works on my machine (macbook m4 pro max with some decent ram). That is about as much as I can promise.
 
 
 ## What it actually does
