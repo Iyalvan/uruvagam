@@ -83,6 +83,7 @@ make html                 # rebuild preview.html with the new audio + video
 - A clean 12–18 second WAV of yourself speaking, plus the exact transcript, at `assets/voice_reference.{wav,txt}`. This is what the TTS clones.
 - A 1–3 second MP4 of your face, looking at the camera, at `assets/face_reference.mp4`. This drives the talking head.
 - Optional but useful: 4–8 sentences at `assets/speaker_style.txt` describing how you naturally talk. The `SpeakerStyleAgent` uses these to rewrite the LLM's generic narration in your voice.
+- Optional: a logo image (PNG/JPG) at any path. Pass it via `LOGO=path/to/logo.png` to brand the PPT and HTML footers.
 
 See `.claude/skills/uruvagam/references/assets.md` for the picky details about each format.
 

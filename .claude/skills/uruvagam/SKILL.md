@@ -43,6 +43,8 @@ Use `AskUserQuestion` for inputs that are choices; ask plain questions for free-
 | `THEME` | choice from `themes/` | See **Theme selection** below — enumerate from `themes/*.yaml` before asking. |
 | `PROVIDER` | choice | `omlx` (default, local Mac Silicon, quality agents run), `ollama` (local cross-platform, quality agents run), or `claude` (cloud Haiku 4.5, **agents do not run**). Pick the one whose key/server you have ready. |
 
+**Optional:** `LOGO=<path>` — pass a PNG or JPG and it lands in the bottom-right footer of every PPT and HTML slide. Skip for an unbranded deck.
+
 **Theme selection:**
 Before asking the user to pick, enumerate candidates:
 1. Run `ls themes/*.yaml` to discover available themes
