@@ -25,7 +25,6 @@ I wanted a way to take a topic — or a pile of half-written notes — and turn 
 
 This is the result. It is an experiment. It works on my machine. That is about as much as I can promise.
 
-![Pipeline overview](assets/from-idea-to-voice-and-visuals.svg)
 
 ## What it actually does
 
