@@ -1,4 +1,25 @@
+
+<div align="center">
+       
 # uruvagam
+       
+### from idea to voice and visuals  
+
+**கருத்திலிருந்து குரலும் காட்சிகளும்**
+
+<br>
+
+<img src="./assets/from-idea-to-voice-and-visuals.svg"
+       alt="From Idea to Voice and Visuals workflow"
+       width="680" />
+
+<br>
+
+*Turn raw ideas into narrated, presenter-led, interactive visual experiences.*
+
+</div>
+
+---
 
 I wanted a way to take a topic — or a pile of half-written notes — and turn it into a presentation I could actually narrate, in my own voice, without spending an evening on PowerPoint. So I started stitching together open-source pieces: a local LLM to draft the slides, a TTS model that could clone a 15-second voice sample, and Wav2Lip to make a talking-head video that more-or-less tracks the audio.
 
