@@ -1,0 +1,10 @@
+# talkforge — Phase A (content generation + voice)
+# Phase B (torch/onnx/insightface/liveportrait) added after voice POC works.
+
+mlx==0.31.2
+mlx-lm==0.31.3
+anthropic==0.100.0
+python-pptx==1.0.2
+pyyaml==6.0.3
+soundfile==0.13.1
+f5-tts-mlx==0.2.6

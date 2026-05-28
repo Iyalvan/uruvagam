@@ -1,0 +1,54 @@
+# uruvagam config — overridable per-run via CLI flags.
+# OMLX_API_KEY must be set as an environment variable; never put it here.
+
+provider: omlx
+model: Qwen3.6-35B-A3B-4bit
+omlx_base_url: http://127.0.0.1:8000
+ollama_base_url: http://localhost:11434
+ollama_model: llama3.2
+
+# TTS is independent of the LLM provider above.
+# See tts.py --engine for choices: f5tts | qwen3tts-omlx | kokoro | elevenlabs
+
+presentation:
+  # Default remains generic and open-source friendly. Override these locally or
+  # via Make variables for organisation-specific decks.
+  theme: dark_corporate
+  template: ""
+  logo: ""
+
+video:
+  default_backend: wav2lip
+  audio_dir: audio_qwen3tts
+  output_root: video_eval
+  face_ref: assets/face_reference.mp4
+  backends:
+    wav2lip:
+      type: wav2lip
+      checkpoint: weights/checkpoints/wav2lip.pth
+      device: cpu
+      batch_size: 4
+    latentsync:
+      type: external
+      runtime: cuda_external
+      status: optional
+      # Official LatentSync inference is CUDA-oriented. Configure only after
+      # creating a separate compatible environment or CUDA host.
+      # Placeholders available: {face}, {audio}, {output}, {slide}, {slide_padded}, {run_dir}, {project_dir}.
+      # Put local paths in ignored config.local.yaml or pass VIDEO_EXTERNAL_COMMAND.
+      cwd: ""
+      command: ""
+    latentsync_cuda_1_6:
+      type: external
+      runtime: remote_ansible_cuda
+      status: recommended_poc_candidate
+      checkpoint_repo: ByteDance/LatentSync-1.6
+      unet_config: configs/unet/stage2_512.yaml
+      inference_steps: 20
+      guidance_scale: 1.5
+      deepcache: true
+      # Managed by ansible/latentsync-cuda and root Makefile targets:
+      #   make latentsync-cuda-poc SLIDE=1
+      #   make latentsync-cuda-all
+      cwd: ""
+      command: ""

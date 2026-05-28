@@ -1,0 +1,31 @@
+name: dark_corporate
+fonts:
+  heading: Aptos Display
+  body: Aptos
+  css: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+colors:
+  deck_background: "#0D0D1A"
+  slide_background: "#1A1A2E"
+  surface: "#16213E"
+  elevated: "#0F3D6E"
+  accent: "#53C4FF"
+  accent_2: "#2A7AAA"
+  text: "#FFFFFF"
+  body_text: "#D8DFEB"
+  muted: "#8A9ABB"
+  row_odd: "#0A2A50"
+  row_even: "#16213E"
+  control_border: "#1E2A3A"
+  notes_background: "#0A1220"
+  pip_background: "#0A0A15"
+ppt:
+  footer_text: Generated with uruvagam
+  logo_width_inches: 1.05
+  layout_title: Title Slide White
+  layout_content: Title and Content
+  layout_summary: Title and Content
+  layout_blank: Blank
+html:
+  tagline: Generated with uruvagam
+  footer_text: Generated with uruvagam
+  slide_shadow: "0 20px 60px rgba(0,0,0,.6)"

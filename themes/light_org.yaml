@@ -1,0 +1,31 @@
+name: light_org
+fonts:
+  heading: Aptos Display
+  body: Aptos
+  css: "-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+colors:
+  deck_background: "#F3F5F7"
+  slide_background: "#FFFFFF"
+  surface: "#F7F8FA"
+  elevated: "#EEF2F6"
+  accent: "#0067B1"
+  accent_2: "#C7D1DC"
+  text: "#111827"
+  body_text: "#26313D"
+  muted: "#657181"
+  row_odd: "#F1F5F9"
+  row_even: "#FFFFFF"
+  control_border: "#D8DEE6"
+  notes_background: "#FFFFFF"
+  pip_background: "#F3F5F7"
+ppt:
+  footer_text: Generated with uruvagam
+  logo_width_inches: 1.05
+  layout_title: Title Slide White
+  layout_content: Title and Content
+  layout_summary: Title and Content
+  layout_blank: Blank
+html:
+  tagline: Generated with uruvagam
+  footer_text: Generated with uruvagam
+  slide_shadow: "0 18px 50px rgba(15,23,42,.16)"

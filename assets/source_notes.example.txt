@@ -1,0 +1,73 @@
+Example source notes — format reference
+----------------------------------------
+This file shows what source notes should look like for uruvagam's --source mode.
+Replace with your actual topic notes.
+
+Usage:
+  python generate.py \
+    --source assets/your-topic-notes.txt \
+    --title "Your Topic Title" \
+    --duration 20 \
+    --audience "Your audience description"
+
+------------------------------------------------------------
+TOPIC: Introduction to REST APIs
+
+CONTEXT:
+REST APIs are the backbone of modern web services. This session is for
+engineers who write or consume APIs daily but have never formally learned
+the principles.
+
+KEY CONCEPTS:
+
+1. What is REST?
+   - Representational State Transfer — architectural style, not a protocol
+   - Stateless: each request contains all information needed to process it
+   - Resources identified by URLs, not actions
+   - The difference between REST and RPC: REST thinks in nouns, RPC thinks in verbs
+
+2. HTTP Methods
+   - GET: read — should never change state
+   - POST: create — generates new resource, not idempotent
+   - PUT: full update — replaces the resource entirely
+   - PATCH: partial update — only what changed
+   - DELETE: remove
+   - Why idempotency matters: retries after network failure should be safe
+
+3. Status Codes (the four you actually use)
+   - 200 OK: everything worked
+   - 201 Created: POST succeeded, resource exists now
+   - 400 Bad Request: client sent garbage — their fault
+   - 401 vs 403: not authenticated vs authenticated but not authorized
+   - 404 Not Found: resource does not exist at this URL
+   - 500 Internal Server Error: our fault, something blew up
+   - 429 Too Many Requests: rate limiting — crucial for production APIs
+
+4. URL Design
+   - /users, not /getUsers (nouns not verbs)
+   - /users/123, not /getUserById?id=123
+   - Nested: /users/123/orders for owned resources
+   - Filtering: /users?role=admin&active=true (query params, not path)
+   - Versioning: /v1/users — always version from day one
+
+5. Request / Response Shape
+   - Always JSON, always Content-Type: application/json
+   - Consistent error format: { "error": "message", "code": "ERROR_CODE" }
+   - Pagination: { "data": [...], "next_cursor": "...", "total": 1200 }
+   - Never return raw arrays at root level — always wrap in an object
+
+6. Authentication Patterns
+   - API keys: simple, for server-to-server
+   - Bearer tokens (JWT): for user sessions
+   - OAuth2: for third-party access (let someone else's users use your API)
+   - Where NOT to put secrets: URL query params (they end up in logs)
+
+METAPHOR IDEAS:
+   - REST is like a library: URLs are the shelf locations, HTTP methods are
+     what you can do (browse, borrow, return, request purchase). The librarian
+     does not remember you between visits (stateless).
+   - Status codes are like traffic lights: green (2xx), yellow/redirect (3xx),
+     red because of you (4xx), red because of us (5xx).
+
+AUDIENCE: engineers who use APIs daily but want to understand the principles
+DURATION TARGET: 15 minutes

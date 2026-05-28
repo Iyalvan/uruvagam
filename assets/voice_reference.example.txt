@@ -1,0 +1,19 @@
+Voice reference transcript — example format
+------------------------------------------
+Copy this file to voice_reference.txt and replace with the EXACT words you speak
+in your voice_reference.wav recording. F5-TTS uses this to align voice cloning.
+
+The transcript must match the audio word-for-word — including filler words.
+Record 14–30 seconds in a quiet room, front-facing, consistent pace.
+
+Example:
+  "Hi, I'm [your name]. In this session we'll cover [topic].
+   We'll explore [concept 1], [concept 2], and [concept 3].
+   By the end, you'll have a clear picture of how these work together."
+
+Tips:
+  - Speak at your normal presentation pace, not slowly
+  - One continuous sentence or two short ones works well
+  - Avoid background noise, fan hum, or reverb
+  - Trim to the first word onset: ffmpeg -y -ss <start_offset> -t <duration> \
+      -i your_recording.wav -ac 1 -ar 24000 -sample_fmt s16 assets/voice_reference.wav

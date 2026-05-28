@@ -1,0 +1,81 @@
+# ── Python ────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.Python
+
+# ── Virtual environment ───────────────────────────────────────
+.venv/
+venv/
+env/
+
+# ── Model weights (large binaries, 100MB–500MB each) ─────────
+weights/
+
+# ── Generated outputs ─────────────────────────────────────────
+# Audio (WAV ~2-5MB each), video (MP4 ~20-50MB each), PPTX, HTML
+outputs/
+
+# ── Personal reference assets (face + voice) ─────────────────
+# Users provide their own — not committed to the repo
+assets/face_reference.mp4
+assets/face_reference.mp4.mov
+assets/face_reference_cropped.mp4
+assets/face_reference_new.mp4
+assets/face_reference_new.mp4.mov
+assets/voice_reference.wav
+assets/voice_reference.wav.aifc
+assets/voice_reference.wav.m4a
+assets/voice_refs/
+assets/template.pptx
+# speaker_style.txt is personal — commit your own version intentionally
+assets/speaker_style.txt
+
+# ── Personal transcripts and usecase content ─────────────────
+# voice_reference.txt contains the presenter's name and identity
+assets/voice_reference.txt
+# usecase-specific source notes (any real deck content)
+assets/*.notes.txt
+
+# ── Knowledge graph outputs ───────────────────────────────────
+graphify-out/
+
+# ── Original scaffold archive (stale) ────────────────────────
+files.zip
+preview_sample.html
+
+# ── macOS ─────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# ── Secrets / env ─────────────────────────────────────────────
+.env
+.env.*
+*.local.yaml
+config.local.yaml
+ansible/**/inventory.ini
+ansible/**/vars.yml
+ansible/**/*.pem
+ansible/**/*.pem-cert.pub
+ansible/**/bin/
+sessions/
+
+# ── Editors ───────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Claude Code / OpenCode session state ─────────────────────
+.claude/settings.local.json
+.codex/
+.opencode/

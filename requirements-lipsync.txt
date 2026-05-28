@@ -1,0 +1,13 @@
+# talkforge — local lip-sync POC dependencies
+# Installed into the existing .venv during session 2.
+#
+# Note: lipsync 0.1.0 declares av>=14,<15, but PyAV 14 does not build against
+# the installed Homebrew FFmpeg 8.1.1. We use av 17.0.1, which imports and works
+# for the current POC, so `pip check` will intentionally report that mismatch.
+
+av==17.0.1
+torch==2.11.0
+opencv-python==4.13.0.92
+face-alignment==1.5.0
+librosa==0.10.2.post1
+lipsync==0.1.0

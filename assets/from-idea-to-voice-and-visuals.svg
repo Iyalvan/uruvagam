@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="820" viewBox="0 0 820 820" role="img" aria-labelledby="title desc">
+  <title id="title">From Idea to Voice and Visuals</title>
+  <desc id="desc">A workflow from raw thought or notes, to polished slides, voice clone narration, lip-synced presenter, and interactive HTML presentation ready to share.</desc>
+
+  <defs>
+    <linearGradient id="header" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="final" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#dcfce7"/>
+      <stop offset="100%" stop-color="#bbf7d0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#64748b"/>
+    </marker>
+    <style>
+      .font { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; }
+      .title { font-size: 29px; font-weight: 700; letter-spacing: 1.4px; fill: #ffffff; }
+      .icons { font-size: 27px; fill: #ffffff; }
+      .step { font-size: 19px; font-weight: 600; fill: #0f172a; }
+      .sub { font-size: 15px; fill: #475569; }
+      .pill { font-size: 13px; font-weight: 700; letter-spacing: .7px; fill: #166534; }
+    </style>
+  </defs>
+
+  <rect width="820" height="820" rx="22" fill="#f8fafc"/>
+  <rect x="25" y="25" width="770" height="150" rx="18" fill="url(#header)"/>
+  <text class="font title" x="410" y="80" text-anchor="middle">FROM IDEA TO VOICE AND VISUALS</text>
+  <text class="font icons" x="410" y="128" text-anchor="middle">🧠  →  🗣️  →  👤  →  🎬  →  📱</text>
+
+  <!-- connectors -->
+  <path d="M410 255 V283" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M410 365 V393" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M410 475 V503" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M410 585 V613" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- nodes -->
+  <g filter="url(#shadow)">
+    <rect x="250" y="195" width="320" height="60" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+    <rect x="250" y="305" width="320" height="60" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+    <rect x="250" y="415" width="320" height="60" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+    <rect x="250" y="525" width="320" height="60" rx="12" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/>
+    <rect x="210" y="635" width="400" height="105" rx="14" fill="url(#final)" stroke="#16a34a" stroke-width="2"/>
+  </g>
+
+  <text class="font step" x="410" y="233" text-anchor="middle">Raw Thought / Notes</text>
+
+  <text class="font step" x="410" y="343" text-anchor="middle">Polished Slides</text>
+
+  <text class="font step" x="410" y="453" text-anchor="middle">Voice Clone Narration</text>
+
+  <text class="font step" x="410" y="563" text-anchor="middle">Lip-Synced Presenter</text>
+
+  <text class="font step" x="410" y="678" text-anchor="middle">Interactive HTML Presentation</text>
+  <rect x="336" y="697" width="148" height="25" rx="13" fill="#ffffff" opacity="0.72"/>
+  <text class="font pill" x="410" y="715" text-anchor="middle">READY TO SHARE</text>
+</svg>

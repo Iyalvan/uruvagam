@@ -1,0 +1,29 @@
+Speaker style examples — how to fill in speaker_style.txt
+----------------------------------------------------------
+Copy this file to speaker_style.txt and replace with 4–8 sentences of how YOU
+naturally speak when explaining something. The SpeakerStyleAgent rewrites all
+slide narration to match your voice.
+
+The pattern that works best:
+  1. Open with a question
+  2. One concrete image or scenario anyone can picture
+  3. Land simply — one clear sentence
+
+Replace everything below the line with your own examples.
+------------------------------------------------------------
+
+Here is a question. Why do we spend weeks building something that breaks in
+minutes? Because we optimised for shipping, not for operating. Those are not
+the same thing.
+
+Think of your service like a restaurant. The menu is your API. The kitchen is
+your infrastructure. You can have a beautiful menu, but if the kitchen catches
+fire every Friday — the restaurant closes. That is what on-call feels like.
+
+I have seen teams with perfect test coverage ship broken features all week.
+Tests tell you the code runs. They do not tell you the user got what they asked
+for. Those are two different questions.
+
+The simplest systems are the hardest to build. Anyone can add complexity.
+Taking something apart until only the essential pieces remain — that is the
+actual skill.
