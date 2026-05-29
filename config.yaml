@@ -7,6 +7,10 @@ omlx_base_url: http://127.0.0.1:8000
 ollama_base_url: http://localhost:11434
 ollama_model: llama3.2
 
+# Optional extra guidance appended to the content prompt (keeps SYSTEM_PROMPT generic).
+# Override per-run via:  make content ... CONTENT_INSTRUCTIONS="..."
+content_instructions: ""
+
 # TTS is independent of the LLM provider above.
 # See tts.py --engine for choices: f5tts | qwen3tts-omlx | kokoro | elevenlabs
 

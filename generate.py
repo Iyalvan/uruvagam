@@ -82,6 +82,9 @@ def main():
                         help="Skip all quality agents (ContentCritic, SpeakerStyle, DurationBudget)")
     parser.add_argument("--speaker-style", default="assets/speaker_style.txt",
                         help="Presenter speaking style examples for SpeakerStyleAgent (default: assets/speaker_style.txt)")
+    # added: optional per-run guidance appended to the content prompt (falls back to config content_instructions)
+    parser.add_argument("--instructions", default=None,
+                        help="Extra content guidance appended to the prompt (e.g. TTS spoken-form rules)")
     args = parser.parse_args()
 
     # ── Resolve topic vs source mode ───────────────────────────────────────────
@@ -109,6 +112,8 @@ def main():
     theme = args.theme or presentation_cfg.get("theme", "dark_corporate")
     template_path = args.template or presentation_cfg.get("template")
     logo_path = args.logo or presentation_cfg.get("logo")
+    # added: extra content guidance — CLI flag wins, else config content_instructions, else none
+    extra_instructions = args.instructions or cfg.get("content_instructions")
     omlx_url = cfg.get("omlx_base_url", "http://127.0.0.1:8000")
     omlx_api_key = os.environ.get("OMLX_API_KEY")
     ollama_url = cfg.get("ollama_base_url", "http://localhost:11434")
@@ -158,6 +163,7 @@ def main():
             ollama_base_url=ollama_url,
             api_key=api_key,
             source_content=source_content,
+            extra_instructions=extra_instructions,
         )
         content["_audience"] = args.audience
 

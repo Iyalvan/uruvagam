@@ -14,6 +14,7 @@ PROVIDER ?= omlx
 THEME ?= dark_corporate
 TEMPLATE ?=
 LOGO ?=
+CONTENT_INSTRUCTIONS ?=
 QWEN_TTS_MODEL ?= Qwen3-TTS-12Hz-1.7B-Base-bf16
 QWEN_VOICE ?=
 QWEN_VOICE_REF ?= assets/voice_reference.wav
@@ -26,6 +27,7 @@ VIDEO_FACE_REF ?= assets/face_reference.mp4
 THEME_ARGS = --theme "$(THEME)"
 TEMPLATE_ARGS = $(if $(strip $(TEMPLATE)),--template "$(TEMPLATE)",)
 LOGO_ARGS = $(if $(strip $(LOGO)),--logo "$(LOGO)",)
+CONTENT_INSTRUCTIONS_ARG = $(if $(strip $(CONTENT_INSTRUCTIONS)),--instructions "$(CONTENT_INSTRUCTIONS)",)
 PRESENTATION_ARGS = $(THEME_ARGS) $(TEMPLATE_ARGS) $(LOGO_ARGS)
 QWEN_TTS_VOICE_ARG = $(if $(strip $(QWEN_VOICE)),--qwen-voice "$(QWEN_VOICE)",)
 
@@ -157,7 +159,8 @@ content:
 	    --duration $(DURATION) \
 	    --audience "$(AUDIENCE)" \
 	    --provider $(PROVIDER) \
-	    $(PRESENTATION_ARGS)
+	    $(PRESENTATION_ARGS) \
+	    $(CONTENT_INSTRUCTIONS_ARG)
 	@echo ""
 	@echo "  Next: make report   (check quality score)"
 	@echo "        make open     (review slides)"
@@ -172,6 +175,7 @@ content-fast:
 	    --audience "$(AUDIENCE)" \
 	    --provider $(PROVIDER) \
 	    $(PRESENTATION_ARGS) \
+	    $(CONTENT_INSTRUCTIONS_ARG) \
 	    --no-agents
 	@echo ""
 	@echo "  Agents skipped. Next: make open"
@@ -185,7 +189,8 @@ content-topic:
 	    --duration $(DURATION) \
 	    --audience "$(AUDIENCE)" \
 	    --provider $(PROVIDER) \
-	    $(PRESENTATION_ARGS)
+	    $(PRESENTATION_ARGS) \
+	    $(CONTENT_INSTRUCTIONS_ARG)
 
 # =============================================================================
 # SLIDES — regenerate PPTX or HTML from existing content.json

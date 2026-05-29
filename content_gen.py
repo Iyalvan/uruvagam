@@ -68,6 +68,8 @@ def generate_content(
     api_key: Optional[str] = None,
     # added: when provided, the LLM restructures these notes instead of inventing from scratch
     source_content: Optional[str] = None,
+    # added: optional per-run guidance appended to the user prompt (e.g. TTS spoken-form rules); keeps SYSTEM_PROMPT generic
+    extra_instructions: Optional[str] = None,
 ) -> dict:
     """Generate structured training content for a given topic (or restructure raw notes if source_content is given)."""
 
@@ -97,6 +99,10 @@ TARGET SLIDE COUNT: {slides_count}
 Make it practical, technically accurate, and immediately usable for the audience.
 Speaker notes should sound natural when read aloud — not robotic."""
 
+    # added: append optional per-run guidance (config-driven, overridable via make)
+    if extra_instructions:
+        user_prompt += f"\n\nADDITIONAL INSTRUCTIONS:\n{extra_instructions}"
+
     if provider == "omlx":
         raw = _call_omlx(user_prompt, system, model, omlx_base_url, omlx_api_key)
     elif provider == "ollama":
@@ -124,7 +130,8 @@ def _call_omlx(prompt: str, system: str, model: str, base_url: str, api_key: Opt
             {"role": "user", "content": prompt},
         ],
         "temperature": 0.7,
-        "max_tokens": 8192,
+        # raised from 8192: long decks (40 min ≈ 27 slides + notes) truncated the JSON mid-object
+        "max_tokens": 16384,
         # disable Qwen3.6 thinking mode — it leaks chain-of-thought into the output
         "chat_template_kwargs": {"enable_thinking": False},
     }
