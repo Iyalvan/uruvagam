@@ -116,6 +116,12 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     color: var(--cyan);
     margin-bottom: 1.5%;
   }}
+  .slide-title-content .presenter {{
+    font-size: clamp(12px, 1.6vw, 18px);
+    color: var(--white);
+    font-weight: 600;
+    margin-top: 1%;
+  }}
   .slide-title-content .tagline {{
     font-size: clamp(9px, 1.3vw, 14px);
     color: var(--muted);
@@ -469,7 +475,8 @@ TITLE_SLIDE_HTML = """
       <h1>{title}</h1>
       <div class="title-rule"></div>
       <div class="meta">{meta}</div>
-      <div class="tagline">{tagline}</div>
+      {presenter_html}
+      {tagline_html}
     </div>
     {footer_html}
   </div>
@@ -537,7 +544,9 @@ def _build_slides(content: dict) -> list:
     slides.append({
         "slide_type": "title",
         "title": content.get("title", "Training Presentation"),
-        "meta": f"{content.get('duration_minutes', 10)} minutes  ·  {content.get('_audience', 'Engineering Team')}",
+        # _tagline overrides the default duration·audience meta line; _presenter adds an author line
+        "meta": content.get("_tagline") or f"{content.get('duration_minutes', 10)} minutes  ·  {content.get('_audience', 'Engineering Team')}",
+        "presenter": content.get("_presenter", ""),
         "speaker_notes": "",
     })
 
@@ -559,11 +568,17 @@ def _render_slides_html(slides: list, content: dict, theme: dict, logo_src: str 
         stype = slide.get("slide_type", "content")
 
         if stype == "title":
+            presenter = slide.get("presenter", "")
+            presenter_html = f'<div class="presenter">{_esc(presenter)}</div>' if presenter else ""
+            # _footer_tagline (if set in content, even to "") overrides the theme tagline; empty omits the line
+            tagline_val = content.get("_footer_tagline", theme["html"].get("tagline", "Generated with uruvagam"))
+            tagline_html = f'<div class="tagline">{_esc(tagline_val)}</div>' if tagline_val else ""
             parts.append(TITLE_SLIDE_HTML.format(
                 title=_esc(slide.get("title", "")),
                 meta=_esc(slide.get("meta", "")),
-                tagline=_esc(theme["html"].get("tagline", "Generated with uruvagam")),
-                footer_html=footer_html,
+                presenter_html=presenter_html,
+                tagline_html=tagline_html,
+                footer_html=_slide_footer_html(theme, logo_src, include_text=content.get("_title_footer_text", True)),
             ))
 
         else:
@@ -611,8 +626,9 @@ def _render_slides_html(slides: list, content: dict, theme: dict, logo_src: str 
     return "\n".join(parts)
 
 
-def _slide_footer_html(theme: dict, logo_src: str | None) -> str:
-    footer_text = theme["html"].get("footer_text", "")
+def _slide_footer_html(theme: dict, logo_src: str | None, include_text: bool = True) -> str:
+    # include_text=False keeps the logo but drops the footer credit (used on the title slide)
+    footer_text = theme["html"].get("footer_text", "") if include_text else ""
     if not logo_src and theme.get("name") == DEFAULT_THEME_NAME:
         return ""
     logo_html = f'<img class="slide-logo" src="{_esc(logo_src)}" alt="Logo">' if logo_src else ""

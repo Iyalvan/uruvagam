@@ -100,6 +100,13 @@ def _add_template_title_slide(prs: Presentation, content: dict, theme: dict, col
     subtitle = _find_placeholder(slide, PP_PLACEHOLDER.SUBTITLE)
     duration = content.get("duration_minutes", 10)
     audience = content.get("_audience", "Engineering Team")
+    # _tagline/_presenter override the default "Training Module - ..." subtitle when present
+    if content.get("_tagline") or content.get("_presenter"):
+        subtitle_text = "\n".join(
+            t for t in (content.get("_tagline", ""), content.get("_presenter", "")) if t
+        )
+    else:
+        subtitle_text = f"Training Module - {duration} minutes - {audience}"
 
     if title:
         _set_shape_text(
@@ -120,15 +127,15 @@ def _add_template_title_slide(prs: Presentation, content: dict, theme: dict, col
     if subtitle:
         _set_shape_text(
             subtitle,
-            f"Training Module - {duration} minutes - {audience}",
+            subtitle_text,
             size=Pt(18),
             color=colors["muted"],
             font_name=theme["fonts"].get("body"),
         )
     else:
         _text_box(
-            slide, Inches(0.75), Inches(4.5), Inches(12), Inches(0.6),
-            f"Training Module - {duration} minutes",
+            slide, Inches(0.75), Inches(4.5), Inches(12), Inches(0.9),
+            subtitle_text,
             size=Pt(18), color=colors["muted"], font_name=theme["fonts"].get("body"),
         )
 
