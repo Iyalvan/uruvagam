@@ -1,13 +1,14 @@
-# talkforge — local lip-sync POC dependencies
-# Installed into the existing .venv during session 2.
+# uruvagam — local lip-sync (Phase B) dependencies.
+# These resolve cleanly together. Install in TWO steps (idempotent):
+#     pip install -r requirements-lipsync.txt
+#     pip install --no-deps -r requirements-lipsync-nodeps.txt
 #
-# Note: lipsync 0.1.0 declares av>=14,<15, but PyAV 14 does not build against
-# the installed Homebrew FFmpeg 8.1.1. We use av 17.0.1, which imports and works
-# for the current POC, so `pip check` will intentionally report that mismatch.
+# Why two files: lipsync 0.1.0 pins av>=14,<15, but we need av 17 (PyAV 14 does
+# not build against the system FFmpeg). Keeping lipsync in its own --no-deps file
+# preserves av 17. `pip check` will report that one intentional mismatch.
 
 av==17.0.1
 torch==2.11.0
 opencv-python==4.13.0.92
 face-alignment==1.5.0
 librosa==0.10.2.post1
-lipsync==0.1.0

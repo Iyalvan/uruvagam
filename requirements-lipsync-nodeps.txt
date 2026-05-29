@@ -1,0 +1,4 @@
+# uruvagam — Phase B package installed WITHOUT its declared deps.
+# lipsync 0.1.0 pins av<15; we keep av 17 (see requirements-lipsync.txt).
+# Install with:  pip install --no-deps -r requirements-lipsync-nodeps.txt
+lipsync==0.1.0

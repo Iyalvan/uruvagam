@@ -26,6 +26,7 @@ echo ""
 echo "  Phase B (lip sync — torch, Wav2Lip, PyAV) is heavy and optional."
 echo "  Install it later when you want talking-head video:"
 echo "      pip install -r requirements-lipsync.txt"
+echo "      pip install --no-deps -r requirements-lipsync-nodeps.txt"
 
 # ── Asset placeholders (always) ────────────────────────────────
 mkdir -p assets outputs weights/checkpoints
